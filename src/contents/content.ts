@@ -76,7 +76,7 @@ export const about = {
   journey: {
     headline: 'The Journey',
     timeline: [
-      { id: '1', year: '2019', title: 'Started Full-Stack Development', description: 'Began building web applications with the MEAN stack — Angular, Express, Node.js, and MongoDB. Shipped my first production apps and fell in love with end-to-end engineering.' },
+      { id: '1', year: '2020', title: 'Started Full-Stack Development', description: 'Began building web applications with the MEAN stack — Angular, Express, Node.js, and MongoDB. Shipped my first production apps and fell in love with end-to-end engineering.' },
       { id: '2', year: '2020-2021', title: 'Expanded to MERN & Cloud', description: 'Adopted React for frontend work and moved infrastructure to AWS EC2. Set up Nginx as a reverse proxy, pm2 for process management, and built my first CI/CD pipelines with GitHub Actions.' },
       { id: '3', year: "2022-2023", title: "Production Systems at Scale", description: "Architected and deployed scalable full-stack applications in production. Deepened expertise in DevOps — automated deployments, zero-downtime releases, and cloud infrastructure management." },
       { id: '4', year: "2024", title: "Built DevTinder", description: "Designed and launched devTinder — a developer matchmaking platform built with the MERN stack. A passion project that combined real-time features, clean UX, and production-ready deployment." },
