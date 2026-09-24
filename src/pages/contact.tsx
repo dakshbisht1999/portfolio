@@ -41,6 +41,70 @@ export default function ContactPage() {
   const [errorMsg, setErrorMsg] = useState('');
 
 
+  function validateName(value:string){
+      const trimmedValue = value.trim();
+      
+      // Validate based on required, minLength, and maxLength
+      const error = !trimmedValue
+          ? "Emailer Name Required"
+          : trimmedValue.length < 3
+              ? "Emailer Name must be at least 3 characters."
+              : trimmedValue.length > 30
+                  ? "Emailer Name cannot exceed 30 characters."
+                  : "";
+      
+      setStatus('error');
+      setErrorMsg(error);
+      return !error;
+  };
+
+  function validateSubject(value:string){
+      const trimmedValue = value.trim();
+      
+      // Validate based on required, minLength, and maxLength
+      const error = !trimmedValue
+          ? "Email Subject Required"
+          : trimmedValue.length < 30
+              ? "Email Subject must be at least 30 characters."
+              : trimmedValue.length > 70
+                  ? "Email Subject cannot exceed 70 characters."
+                  : "";
+      
+      setStatus('error');
+      setErrorMsg(error);
+      return !error;
+  };
+
+  function validateMessage(value:string){
+      const trimmedValue = value.trim();
+      
+      // Validate based on required, minLength, and maxLength
+      const error = !trimmedValue
+          ? "Email Message Required"
+          : trimmedValue.length < 50
+              ? "Email Message must be at least 50 characters."
+              : trimmedValue.length > 500
+                  ? "Email Message cannot exceed 500 characters."
+                  : "";
+
+      setStatus('error');
+      setErrorMsg(error);
+      return !error;
+  };
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function validateEmail(value:string){
+      const error = !value.trim()
+          ? "Email Required"
+          : !emailPattern.test(value)
+              ? "Enter a valid email address."
+              : "";
+
+      setStatus('error');
+      setErrorMsg(error);
+      return !error;
+  };
+
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
@@ -48,29 +112,27 @@ export default function ContactPage() {
     const formData = new FormData(form);
     if (formData.get('_gotcha')) return;
 
-    const name = String(formData.get('name') ?? '').trim();
-    const email = String(formData.get('email') ?? '').trim();
-    const subject = String(formData.get('subject') ?? '').trim();
-    const message = String(formData.get('message') ?? '').trim();
+    const name = String(formData.get('name') ?? '');
+    const email = String(formData.get('email') ?? '');
+    const subject = String(formData.get('subject') ?? '');
+    const message = String(formData.get('message') ?? '');
 
     setStatus('sending');
     setErrorMsg('');
 
     try {
+      if(!validateName(name) || !validateEmail(email) || !validateSubject(subject) || !validateMessage(message)) return;
       // Field mapping: only the message textarea goes in messages_attributes[0].body.
       // All other fields (subject) must be added to conversation.data as { "Label": value } pairs.
-      const res = await fetch('/api/contact', {
+      const res = await fetch('https://devtinder.dishantbisht.in/api/v1/auth/email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          conversation: {
-            messages_attributes: [{ body: message || 'New contact form submission' }],
-            data: {
-              __gd_contact_form_title: 'Contact Dishant Bisht',
-              ...(subject ? { 'Subject': subject } : {}),
-            },
-          },
-          user: { email, name },
+          emailComingFrom: 'Portfolio Contact',
+          subject,
+          message,
+          emailId: email, 
+          name
         }),
       });
 
