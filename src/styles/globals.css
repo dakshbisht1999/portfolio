@@ -2882,6 +2882,14 @@ html {
     width: 140px;
   }
 
+  .md\:w-\[130px\]{
+    width: 130px;
+  }
+
+  .md\:w-\[120px\]{
+    width: 120px;
+  }
+
   .md\:w-\[var\(--radix-navigation-menu-viewport-width\)\]{
     width: var(--radix-navigation-menu-viewport-width);
   }

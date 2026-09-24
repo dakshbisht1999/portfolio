@@ -134,7 +134,7 @@ export default function AboutPage() {
                     transition={{ duration: 0.4, delay: i * 0.08, ease: 'easeOut' as const }}
                   >
                     {/* Year */}
-                    <div className="md:w-[140px] shrink-0 flex md:justify-end items-start pt-1 pl-6 md:pl-0">
+                    <div className="md:w-[120px] shrink-0 flex md:justify-end items-start pt-1 pl-6 md:pl-0">
                       <span
                         className="text-xs font-mono font-bold"
                         style={{ color: 'hsl(var(--primary))' }}
@@ -154,7 +154,7 @@ export default function AboutPage() {
                     />
 
                     {/* Content */}
-                    <div className="pl-6 md:pl-0 flex flex-col gap-2">
+                    <div className="pl-6 md:pl-1 flex flex-col gap-2">
                       <h3
                         className="text-lg font-bold"
                         style={{ color: 'hsl(var(--foreground))' }}
