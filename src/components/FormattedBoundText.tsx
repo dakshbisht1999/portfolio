@@ -36,11 +36,11 @@ export function FormattedBoundText({ devId, guard, children }: FormattedBoundTex
 
   return (
     <span
-      data-airo-formatted-bound-text="true"
-      data-airo-format-bold={marks.bold ? 'true' : undefined}
-      data-airo-format-italic={marks.italic ? 'true' : undefined}
-      data-airo-format-color={marks.color || undefined}
-      data-airo-format-size={marks.fontSize || undefined}
+      data-formatted-bound-text="true"
+      data-format-bold={marks.bold ? 'true' : undefined}
+      data-format-italic={marks.italic ? 'true' : undefined}
+      data-format-color={marks.color || undefined}
+      data-format-size={marks.fontSize || undefined}
       style={buildFormatOverrideStyle(marks)}
     >
       {children}

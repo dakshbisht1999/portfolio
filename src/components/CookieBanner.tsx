@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 
 const COOKIE_CONSENT_KEY = 'c2_analytics_consent';
 const COOKIE_CONSENT_EXPIRES_DAYS = 365;
-const BANNER_RESET_KEY = 'airo-banner-reset';
+const BANNER_RESET_KEY = 'builder-banner-reset';
 
 interface CookieConsent {
   analytics: boolean;
@@ -31,16 +31,10 @@ function initTracking(): void {
   window.__SCC_INIT__ = true;
   window._signalsDataLayer = window._signalsDataLayer || [];
 
-  const appId: string | undefined = import.meta.env.SITE_ID;
-  window._trfd = window._trfd || [];
-  window._trfd.push({ ap: 'airo-app-builder', ...(appId ? { websiteId: appId } : {}) });
-
   const h = location.hostname;
-  const url = h === 'localhost' || h.includes('dev-airoapp')
+  const url = h === 'localhost'
     ? 'https://img1.dev-wsimg.com/signals/js/clients/scc-c2/scc-c2.js'
-    : h.includes('test-airoapp')
-      ? 'https://img1.test-wsimg.com/signals/js/clients/scc-c2/scc-c2.min.js'
-      : 'https://img1.wsimg.com/signals/js/clients/scc-c2/scc-c2.min.js';
+    : 'https://img1.wsimg.com/signals/js/clients/scc-c2/scc-c2.min.js';
   const script = document.createElement('script');
   script.src = url;
   script.async = true;
@@ -78,7 +72,7 @@ function initTracking(): void {
       }
     }
 
-    track('airo.website.click', 'click', text || type, {
+    track('website.click', 'click', text || type, {
       element_type: type,
       element_text: text,
       element_id: el.id || undefined,
@@ -202,7 +196,7 @@ export default function CookieBanner() {
       aria-live="polite"
       aria-label="Cookie consent banner"
       aria-describedby="cookie-banner-description"
-      data-airo-non-editable
+      data-non-editable
     >
       <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">

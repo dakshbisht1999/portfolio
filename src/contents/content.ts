@@ -1,4 +1,4 @@
-// Local, editable content that replaces the Airo-provided virtual:content module.
+// Local, editable content for virtual:content module.
 export const home = {
   hero: {
     greeting: "Hi, I'm",

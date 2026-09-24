@@ -3,7 +3,7 @@ import { useSyncExternalStore } from 'react'
 import { EMPTY_FORMAT_OVERRIDE_BUNDLE, type FormatOverrideBundle } from './format-overrides'
 
 export const FORMAT_OVERRIDES_UPDATE_EVENT = 'format-overrides:update'
-export const FORMAT_OVERRIDES_WILL_UPDATE_EVENT = 'airo-format-overrides:will-update'
+export const FORMAT_OVERRIDES_WILL_UPDATE_EVENT = 'format-overrides:will-update'
 
 const listeners = new Set<() => void>()
 let currentBundle: FormatOverrideBundle = EMPTY_FORMAT_OVERRIDE_BUNDLE

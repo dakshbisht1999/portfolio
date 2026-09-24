@@ -559,7 +559,7 @@ video {
     /* Button radius: the kit's radiusButton is written here at install time;
        the default matches shadcn `rounded-md` (calc(var(--radius) - 2px)) so a
        kit without a button radius renders unchanged. Consumed by the Button
-       `cva` via `rounded-[var(--radius-button)]` (AIROBUILD-3249). */
+       `cva` via `rounded-[var(--radius-button)]` (BUILD-3249). */
     --radius-button: calc(var(--radius) - 2px);
 
     /* Spacing scale — every spacing utility takes these rungs: p-base, py-xxl,
