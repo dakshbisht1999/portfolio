@@ -52,9 +52,10 @@ export default function ContactPage() {
               : trimmedValue.length > 30
                   ? "Emailer Name cannot exceed 30 characters."
                   : "";
-      
-      setStatus('error');
-      setErrorMsg(error);
+      if(error){
+        setStatus('error');
+        setErrorMsg(error);
+      }
       return !error;
   };
 
@@ -69,9 +70,11 @@ export default function ContactPage() {
               : trimmedValue.length > 70
                   ? "Email Subject cannot exceed 70 characters."
                   : "";
-      
-      setStatus('error');
-      setErrorMsg(error);
+
+      if(error){
+        setStatus('error');
+        setErrorMsg(error);
+      }
       return !error;
   };
 
@@ -87,8 +90,10 @@ export default function ContactPage() {
                   ? "Email Message cannot exceed 500 characters."
                   : "";
 
-      setStatus('error');
-      setErrorMsg(error);
+      if(error){
+        setStatus('error');
+        setErrorMsg(error);
+      }
       return !error;
   };
 
@@ -100,8 +105,10 @@ export default function ContactPage() {
               ? "Enter a valid email address."
               : "";
 
-      setStatus('error');
-      setErrorMsg(error);
+      if(error){
+        setStatus('error');
+        setErrorMsg(error);
+      }
       return !error;
   };
 
@@ -122,13 +129,12 @@ export default function ContactPage() {
 
     try {
       if(!validateName(name) || !validateEmail(email) || !validateSubject(subject) || !validateMessage(message)) return;
-      // Field mapping: only the message textarea goes in messages_attributes[0].body.
-      // All other fields (subject) must be added to conversation.data as { "Label": value } pairs.
+      
       const res = await fetch('https://devtinder.dishantbisht.in/api/v1/auth/email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          emailComingFrom: 'Portfolio Contact',
+          emailComingFrom: 'portfolio',
           subject,
           message,
           emailId: email, 
