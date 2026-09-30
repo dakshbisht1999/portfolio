@@ -134,7 +134,7 @@ export default function ContactPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          emailComingFrom: 'portfolio',
+          emailComingFrom: 'portfolio', 
           subject,
           message,
           emailId: email, 
