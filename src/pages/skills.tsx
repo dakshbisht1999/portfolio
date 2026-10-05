@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { skills } from '../contents/content';
-import devtinderProjectImg from '@/assets/devtinder-project.png';
 
 export default function SkillsPage() {
 
@@ -250,7 +249,7 @@ export default function SkillsPage() {
               {skills.certificates.headline}
             </motion.h2>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-              {skills.certificates.items.toReversed().map((item, i) => (
+              {skills.certificates.items.toReversed().map((item) => (
                 <a
                   href={item.link}
                   target="_blank"
