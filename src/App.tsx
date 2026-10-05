@@ -5,6 +5,7 @@ import {
   RouterProvider,
   type RouteObject,
 } from 'react-router-dom';
+import GoogleAnalyticsTracker from './components/GoogleAnalyticsTracker';
 import RootLayout from './layouts/RootLayout';
 import Spinner from './components/Spinner';
 import { routes } from './routes';
@@ -20,11 +21,14 @@ function SpinnerFallback() {
 const routeTree: RouteObject[] = [
   {
     element: (
-      <Suspense fallback={<SpinnerFallback />}>
-        <RootLayout>
-          <Outlet />
-        </RootLayout>
-      </Suspense>
+      <>
+        <GoogleAnalyticsTracker />
+        <Suspense fallback={<SpinnerFallback />}>
+          <RootLayout>
+            <Outlet />
+          </RootLayout>
+        </Suspense>
+      </>
     ),
     children: routes,
   },
