@@ -685,7 +685,7 @@ export const skills = {
         id: '10',
         name: 'Namaste Node.Js',
         issuer: 'NamasteDev',
-        issuedOn: 'Jun 2026',
+        issuedOn: 'Aug 2026',
         image: 'https://namastedev.com/assets/images/namaste-node.webp',
         link: 'https://namastedev.com/dakshbisht1999/certificates/namaste-node',
         cId: '99386413BCF81BFE08556666A6B'
