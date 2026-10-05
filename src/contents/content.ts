@@ -260,7 +260,13 @@ export const about = {
     eyebrow: 'About me',
     headline: 'Engineer by craft. Builder by nature.',
     bio:
-      "I'm Dishant Bisht — a Senior Software Engineer with 5+ years of experience building and evolving production web applications across frontend, backend, APIs, and cloud environments. My experience includes Angular and React on the frontend, along with Node.js, MongoDB, REST APIs, AWS, and hands-on collaboration around backend systems built with Java, PHP, Laravel, and CakePHP. I've contributed to API design, HLD and LLD discussions, application modernization, system integration, and end-to-end product development, including exposure to microservices-based architectures. Today, I'm continuing to deepen my full-stack engineering capabilities while building toward AI engineering through real-world systems and project-driven exploration."
+      `
+      I'm Dishant Bisht — a Senior Software Engineer with 5+ years of experience building, modernizing, and evolving production web applications across full-stack, API, and cloud environments.
+      
+      My foundation spans frontend architecture in Angular, React, and TypeScript alongside full-stack engineering with Node.js, Express, MongoDB, Python, FastAPI, and AWS. I have driven large-scale modernization projects, PWA migrations, and multi-component enterprise ecosystems, while contributing to API design, HLD/LLD discussions, developer mentoring, and cross-functional backend systems built on Java, PHP, and microservices.
+      
+      Building on this background, I am continuously deepening my full-stack expertise while expanding into GenAI engineering through real-world systems and project-driven exploration.
+      `
   },
   stats: [
     { id: 'experience', value: '5+', label: 'Years Experience' },
@@ -293,7 +299,7 @@ export const about = {
         id: '4',
         year: 'Sep 2024–Dec 2025',
         title: 'Senior Software Engineer | Avalon Information Systems',
-        description: 'Moved into enterprise product engineering, working on large-scale applications and modernization initiatives. Contributed to Angular upgrades, REST API integration, application architecture, HLD/LLD discussions, and collaboration across frontend and backend teams, while also mentoring developers.',
+        description: 'Worked across enterprise applications spanning 250+ components, 30+ modules, and 400+ API integrations. Led Angular modernization initiatives, contributed to REST API integration and HLD/LLD discussions, and supported team delivery through mentoring and code reviews.',
       },
       {
         id: '5',
@@ -474,7 +480,7 @@ export const projects = {
         name: 'OpenEMIS',
         organization: 'Avalon',
         description:
-          'Contributed to the frontend ecosystem of OpenEMIS, working across multiple applications including Exams, Core, Registrations, Styleguide, and related product modules. Worked on Angular modernization, UI components, data-heavy interfaces, and frontend engineering within a large education technology platform.',
+          'Led modernization of OpenEMIS applications, upgrading legacy Angular systems from Angular 7 to Angular 20. Contributed across Exams, Core, Registrations, Styleguide, and related modules, building reusable UI components and data-heavy interfaces for a large education technology platform.',
         applications: [
           'Exams',
           'Core',
@@ -521,7 +527,7 @@ export const projects = {
         name: 'MariDeal',
         organization: 'EbizOn',
         description:
-          'Contributed to the frontend modernization of the MariDeal platform by driving a progressive migration from legacy AngularJS (converting controllers and directives) to a modern Angular 13 component-based architecture with PWA capabilities. Integrated Google OAuth authentication, multi-lingual support, and RESTful APIs communicating with a Magento backend, while utilizing Postman for end-to-end endpoint validation and handling real-time bug resolutions.',
+          'Led the migration of the MariDeal PWA from AngularJS to Angular 13, replacing legacy controllers and directives with a modern component-based architecture. Delivered PWA capabilities, integrated Google OAuth and multilingual support, and connected REST APIs to a Magento backend.',
         focus: [
           'Angular',
           'AngularJS → Angular migration',
