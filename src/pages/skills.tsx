@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { skills } from '../contents/content';
+import devtinderProjectImg from '@/assets/devtinder-project.png';
 
 export default function SkillsPage() {
 
@@ -235,11 +236,93 @@ export default function SkillsPage() {
           </div>
         </section>
 
+        {/* ── CERTIFICATES ────────────────────────────────────────────────────── */}
+        <section className="py-xxl" style={{ background: 'hsl(var(--background))' }}>
+          <div className="max-w-7xl mx-auto px-6">
+            <motion.h2
+              className="text-3xl font-black mb-8"
+              style={{ color: 'hsl(var(--foreground))' }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, ease: 'easeOut' as const }}
+            >
+              {skills.certificates.headline}
+            </motion.h2>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+              {skills.certificates.items.toReversed().map((item, i) => (
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <motion.div
+                    className="rounded-xl overflow-hidden"
+                    style={{
+                      border: '1px solid hsl(var(--primary) / 0.4)',
+                      boxShadow: '0 0 40px hsl(var(--primary) / 0.1)',
+                    }}
+                    initial={{ opacity: 0, y: 32 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, ease: 'easeOut' as const }}
+                    whileHover={{
+                      y: -4,
+                      boxShadow: '0 8px 60px hsl(var(--primary) / 0.2)',
+                    }}
+                  >
+                    <div className="grid grid-rows-1 lg:grid-rows-2">
+                      {/* Top — image */}
+                      <div className="relative min-h-64 lg:min-h-0 overflow-hidden">
+                        <img
+                          src={item.image}
+                          alt={'certificate '+item.id}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+
+                      {/* Bottom — info */}
+                      <div
+                        className="p-7 flex flex-col gap-6"
+                        style={{ background: 'hsl(var(--card))' }}
+                      >
+                        {/* Pulse dot */}
+                        <div className="flex items-center gap-2">
+                          <span
+                            className="text-xs font-mono tracking-widest"
+                            style={{ color: 'hsl(var(--accent))' }}
+                          >
+                            <strong className='uppercase'>Certificate ID: </strong>{item.cId}
+                          </span>
+                        </div>
+                        <h3
+                          className="text-lg font-bold"
+                          style={{ color: 'hsl(var(--foreground))' }}
+                        >
+                          {item.name}
+                        </h3>
+                        <p
+                          className="text-sm leading-relaxed"
+                          style={{ color: 'hsl(var(--muted-foreground))' }}
+                        >
+                          <strong>Issued By: </strong>{item.issuer} <br />
+                          <strong>Issued On: </strong>{item.issuedOn}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── TOOLS ────────────────────────────────────────────────────── */}
         <section
           className="py-xxl"
           style={{
-            background: 'hsl(var(--background))',
+            background: 'hsl(var(--secondary))',
             borderTop: '1px solid hsl(var(--border))',
           }}
         >
@@ -284,7 +367,7 @@ export default function SkillsPage() {
         <section
           className="py-xxl"
           style={{
-            background: 'hsl(var(--secondary))',
+            background: 'hsl(var(--background))',
             borderTop: '1px solid hsl(var(--border))',
           }}
         >

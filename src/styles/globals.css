@@ -2870,6 +2870,14 @@ html {
     left: 140px;
   }
 
+  .md\:left-\[150px\]{
+    left: 150px;
+  }
+
+  .md\:left-\[154px\]{
+    left: 154px;
+  }
+
   .md\:flex{
     display: flex;
   }

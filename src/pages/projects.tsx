@@ -2,24 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { projects } from '../contents/content';
 import devtinderProjectImg from '@/assets/devtinder-project.png'
-
-const statusColors: Record<string, { bg: string; text: string; border: string }> = {
-  Production: {
-    bg: 'hsl(var(--accent) / 0.1)',
-    text: 'hsl(var(--accent))',
-    border: 'hsl(var(--accent) / 0.35)',
-  },
-  'In Progress': {
-    bg: 'hsl(var(--primary) / 0.1)',
-    text: 'hsl(var(--primary))',
-    border: 'hsl(var(--primary) / 0.3)',
-  },
-  'Coming Soon': {
-    bg: 'hsl(var(--muted))',
-    text: 'hsl(var(--muted-foreground))',
-    border: 'hsl(var(--border))',
-  },
-};
+import { statusColors } from '@/components/StatusColors';
 
 export default function ProjectsPage() {
 
@@ -165,8 +148,8 @@ export default function ProjectsPage() {
                   {/* Highlights */}
                   <ul className="flex flex-col gap-2">
                     {projects.featured.highlights.map((h) => (
-                      <li key={h.id} className="flex items-start gap-2 text-sm">
-                        <span style={{ color: 'hsl(var(--primary))' }} className="mt-0.5 shrink-0">
+                      <li key={h.id} className="flex items-start items-center gap-2 text-sm">
+                        <span style={{ color: 'hsl(var(--primary))' }} className="shrink-0">
                           ▸
                         </span>
                         <span style={{ color: 'hsl(var(--muted-foreground))' }}>{h.text}</span>
@@ -263,7 +246,7 @@ export default function ProjectsPage() {
           </div>
         </section>
 
-        {/* ── OTHER PROJECTS ───────────────────────────────────────────── */}
+        {/* ── PERSONAL PROJECTS ────────────────────────────────────────── */}
         <section
           className="py-xxl"
           style={{
@@ -272,19 +255,31 @@ export default function ProjectsPage() {
           }}
         >
           <div className="max-w-7xl mx-auto px-6">
-            <motion.p
-              className="text-xs font-mono uppercase tracking-widest mb-8"
-              style={{ color: 'hsl(var(--muted-foreground))' }}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.35 }}
-            >
-              More Projects
-            </motion.p>
+            <div className="mb-8">
+              <motion.p
+                className="text-xs font-mono uppercase tracking-widest mb-2"
+                style={{ color: 'hsl(var(--accent))' }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35 }}
+              >
+                Personal & Open Source
+              </motion.p>
+              <motion.h2
+                className="text-3xl font-black"
+                style={{ color: 'hsl(var(--foreground))' }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+              >
+                Personal Projects & Experiments
+              </motion.h2>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects.other.map((proj, i) => {
+              {projects.personal.map((proj, i) => {
                 const sc = statusColors[proj.status] ?? statusColors['Coming Soon'];
                 return (
                   <motion.div
@@ -369,11 +364,11 @@ export default function ProjectsPage() {
                           Live →
                         </a>
                       ) : null}
-                      {proj.githubUrl.length > 0 ? (
+                      {proj.githubUrl && proj.githubUrl.length > 0 ? (
                         <>
                           {proj.githubUrl.map((url) => (
                             <a
-                              key={url} // Added key prop to prevent React warnings
+                              key={url}
                               href={url}
                               target="_blank"
                               rel="noopener noreferrer"
@@ -394,18 +389,205 @@ export default function ProjectsPage() {
                           ))}
                         </>
                       ) : null}
-                      {!proj.liveUrl && !(proj.githubUrl.length>0) ? (
+                      {!proj.liveUrl && (!proj.githubUrl || proj.githubUrl.length === 0) ? (
                         <span
                           className="text-xs font-mono"
                           style={{ color: 'hsl(var(--muted-foreground))' }}
                         >
-                          Coming soon
+                          {proj.status === 'Planned' ? 'Planned' : 'In development'}
                         </span>
                       ) : null}
                     </div>
                   </motion.div>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        {/* ── PROFESSIONAL WORK ────────────────────────────────────────── */}
+        <section
+          className="py-xxl"
+          style={{
+            background: 'hsl(var(--background))',
+            borderTop: '1px solid hsl(var(--border))',
+          }}
+        >
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-3xl mb-10">
+              <motion.p
+                className="text-xs font-mono uppercase tracking-widest mb-3"
+                style={{ color: 'hsl(var(--accent))' }}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35 }}
+              >
+                {projects.professional.eyebrow}
+              </motion.p>
+              <motion.h2
+                className="text-3xl md:text-4xl font-black mb-4"
+                style={{ color: 'hsl(var(--foreground))' }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+              >
+                {projects.professional.headline}
+              </motion.h2>
+              <motion.p
+                className="text-base leading-relaxed"
+                style={{ color: 'hsl(var(--muted-foreground))' }}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+              >
+                {projects.professional.sub}
+              </motion.p>
+            </div>
+
+            {/* Professional Disclaimer Callout */}
+            <motion.div
+              className="rounded-xl p-5 mb-10 flex items-start gap-4 items-center"
+              style={{
+                background: 'hsl(var(--card))',
+                border: '1px solid hsl(var(--border))',
+              }}
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+            >
+              <div
+                className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                style={{
+                  background: 'hsl(var(--primary) / 0.1)',
+                  color: 'hsl(var(--primary))',
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+              </div>
+              <p
+                className="text-xs leading-relaxed"
+                style={{ color: 'hsl(var(--muted-foreground))' }}
+              >
+                {projects.professional.disclaimer}
+              </p>
+            </motion.div>
+
+            {/* Professional Items Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {projects.professional.items.map((item, i) => (
+                <motion.div
+                  key={item.id}
+                  className="rounded-xl p-7 flex flex-col gap-6"
+                  style={{
+                    background: 'hsl(var(--card))',
+                    border: '1px solid hsl(var(--border))',
+                  }}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.1, ease: 'easeOut' as const }}
+                  whileHover={{
+                    y: -4,
+                    borderColor: 'hsl(var(--primary) / 0.5)',
+                    boxShadow: '0 8px 32px hsl(var(--primary) / 0.12)',
+                  }}
+                >
+                  {/* Badges: Status + Org */}
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <span
+                      className="px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold"
+                      style={{
+                        background: 'hsl(var(--primary) / 0.1)',
+                        color: 'hsl(var(--primary))',
+                        border: '1px solid hsl(var(--primary) / 0.3)',
+                      }}
+                    >
+                      {item.status}
+                    </span>
+                    <span
+                      className="px-2.5 py-0.5 rounded-md text-xs font-mono font-medium"
+                      style={{
+                        background: 'hsl(var(--secondary))',
+                        color: 'hsl(var(--muted-foreground))',
+                        border: '1px solid hsl(var(--border))',
+                      }}
+                    >
+                      {item.organization}
+                    </span>
+                  </div>
+
+                  {/* Title & Description */}
+                  <div className="flex flex-col gap-2">
+                    <h3
+                      className="text-2xl font-bold"
+                      style={{ color: 'hsl(var(--foreground))' }}
+                    >
+                      {item.name}
+                    </h3>
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ color: 'hsl(var(--muted-foreground))' }}
+                    >
+                      {item.description}
+                    </p>
+                  </div>
+
+                  {/* Applications if present */}
+                  {'applications' in item && Array.isArray(item.applications) && item.applications.length > 0 && (
+                    <div className="flex flex-col gap-2 pt-1 border-t" style={{ borderColor: 'hsl(var(--border) / 0.6)' }}>
+                      <p className="text-xs font-mono font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
+                        Modules & Applications:
+                      </p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {item.applications.map((app) => (
+                          <span
+                            key={app}
+                            className="px-2 py-0.5 rounded text-xs font-mono"
+                            style={{
+                              background: 'hsl(var(--secondary))',
+                              color: 'hsl(var(--muted-foreground))',
+                              border: '1px solid hsl(var(--border))',
+                            }}
+                          >
+                            {app}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Core Technical Focus */}
+                  {'focus' in item && Array.isArray(item.focus) && (
+                    <div className="flex flex-col gap-2 pt-1 border-t mt-auto" style={{ borderColor: 'hsl(var(--border) / 0.6)' }}>
+                      <p className="text-xs font-mono font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
+                        Technical Focus:
+                      </p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {item.focus.map((f) => (
+                          <span
+                            key={f}
+                            className="px-2 py-0.5 rounded text-xs font-mono"
+                            style={{
+                              background: 'hsl(var(--primary) / 0.08)',
+                              color: 'hsl(var(--primary))',
+                              border: '1px solid hsl(var(--primary) / 0.2)',
+                            }}
+                          >
+                            {f}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>

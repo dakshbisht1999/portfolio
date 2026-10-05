@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { home } from '../contents/content';
 import devtinderProjectImg from '@/assets/devtinder-project.png'
+import { statusColors } from '@/components/StatusColors';
 
 // ─── Animated role switcher ───────────────────────────────────────────────────
 function RoleSwitcher() {
@@ -326,6 +327,27 @@ export default function HomePage() {
 
         {/* ── SKILLS SNAPSHOT ──────────────────────────────────────────── */}
         <section className="py-xxl" style={{ background: 'hsl(var(--background))' }}>
+          <div className="relative z-10 max-w-7xl mx-auto px-6 py-xxl">
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: 'easeOut' as const }}
+            >
+              <p
+                className="text-xs font-mono uppercase tracking-widest mb-3"
+                style={{ color: 'hsl(var(--accent))' }}
+              >
+                {home.skills.eyebrow}
+              </p>
+              <h2
+                className="text-4xl md:text-5xl font-black mb-6"
+                style={{ color: 'hsl(var(--foreground))' }}
+              >
+                {home.skills.headline}
+              </h2>
+            </motion.div>
+          </div>
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
               {/* Left — stat */}
@@ -570,6 +592,118 @@ export default function HomePage() {
           </div>
         </section>
 
+
+        {/* ── CURRENTLY BUILDING ────────────────────────────────────────── */}
+        <section
+          className="py-xxl"
+          style={{
+            background: 'hsl(var(--secondary))',
+            borderTop: '1px solid hsl(var(--border))',
+          }}
+        >
+          <div className="max-w-7xl mx-auto px-6">
+
+            <motion.div
+              className="max-w-3xl"
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: 'easeOut' as const }}
+            >
+              <p
+                className="text-xs font-mono uppercase tracking-widest mb-3"
+                style={{ color: 'hsl(var(--accent))' }}
+              >
+                {home.currentlyBuilding.eyebrow}
+              </p>
+              <h2
+                className="text-4xl md:text-5xl font-black mb-6"
+                style={{ color: 'hsl(var(--foreground))' }}
+              >
+                {home.currentlyBuilding.headline}
+              </h2>
+              <p
+                className="text-base md:text-lg leading-relaxed mb-10"
+                style={{ color: 'hsl(var(--muted-foreground))' }}
+              >
+                {home.currentlyBuilding.narrative}
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {home.currentlyBuilding.items.map((proj, i) => {
+                const sc = statusColors[proj.status] ?? statusColors['Coming Soon'];
+                return (
+                  <motion.div
+                    key={proj.id}
+                    className="rounded-xl p-7 flex flex-col gap-5 transition-all duration-200"
+                    style={{
+                      background: 'hsl(var(--card))',
+                      border: '1px solid hsl(var(--border))',
+                    }}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: i * 0.08, ease: 'easeOut' as const }}
+                    whileHover={{
+                      y: -4,
+                      borderColor: 'hsl(var(--primary) / 0.5)',
+                      boxShadow: '0 8px 32px hsl(var(--primary) / 0.12)',
+                    }}
+                  >
+                    {/* Status badge */}
+                    <div className="flex items-center justify-between">
+                      <span
+                        className="px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold"
+                        style={{
+                          background: sc.bg,
+                          color: sc.text,
+                          border: `1px solid ${sc.border}`,
+                        }}
+                      >
+                        {proj.status}
+                      </span>
+                    </div>
+
+                    <div className="flex flex-col gap-2 flex-1">
+                      <h3
+                        className="text-xl font-bold"
+                        style={{ color: 'hsl(var(--foreground))' }}
+                      >
+                        {proj.title}
+                      </h3>
+                      <p
+                        className="text-sm leading-relaxed"
+                        style={{ color: 'hsl(var(--muted-foreground))' }}
+                      >
+                        {proj.description}
+                      </p>
+                    </div>
+
+                    {/* Tech stack */}
+                    <div className="flex flex-wrap gap-1.5">
+                      {proj.concepts.map((t,i) => (
+                        <span
+                          key={i}
+                          className="px-2.5 py-0.5 rounded text-xs font-mono"
+                          style={{
+                            background: 'hsl(var(--primary) / 0.08)',
+                            color: 'hsl(var(--primary))',
+                            border: '1px solid hsl(var(--primary) / 0.2)',
+                          }}
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+
         {/* ── GENAI JOURNEY ────────────────────────────────────────────── */}
         <section
           className="py-xxl relative overflow-hidden"
@@ -610,7 +744,14 @@ export default function HomePage() {
               >
                 {home.genai.narrative}
               </p>
-
+            </motion.div>
+            <motion.div
+              className="max-w-4xl"
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: 'easeOut' as const }}
+            >
               <div className="flex flex-wrap gap-3">
                 {home.genai.concepts.map((c, i) => (
                   <motion.span

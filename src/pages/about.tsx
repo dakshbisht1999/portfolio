@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { about } from '../contents/content';
+import me from '@/assets/me.jpeg';
 
 export default function AboutPage() {
 
@@ -10,7 +11,7 @@ export default function AboutPage() {
       <main>
         {/* ── HERO ─────────────────────────────────────────────────────── */}
         <section
-          className="relative pt-32 pb-20 overflow-hidden"
+          className="pt-32 pb-20 relative overflow-hidden"
           style={{ background: 'hsl(var(--background))' }}
         >
           {/* Grid bg */}
@@ -35,33 +36,58 @@ export default function AboutPage() {
           />
 
           <div className="relative z-10 max-w-7xl mx-auto px-6">
-            <motion.p
-              className="text-xs font-mono uppercase tracking-widest mb-4"
-              style={{ color: 'hsl(var(--accent))' }}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, ease: 'easeOut' as const }}
-            >
-              {about.hero.eyebrow}
-            </motion.p>
-            <motion.h1
-              className="text-5xl md:text-6xl font-black leading-tight mb-6 max-w-3xl"
-              style={{ color: 'hsl(var(--foreground))' }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.08, ease: 'easeOut' as const }}
-            >
-              {about.hero.headline}
-            </motion.h1>
-            <motion.p
-              className="text-lg leading-relaxed max-w-2xl"
-              style={{ color: 'hsl(var(--muted-foreground))' }}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.16, ease: 'easeOut' as const }}
-            >
-              {about.hero.bio}
-            </motion.p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              {/* Left */}
+              <motion.div
+                className="flex flex-col gap-6"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, ease: 'easeOut' as const }}
+              >
+                <motion.p
+                  className="text-xs font-mono uppercase tracking-widest"
+                  style={{ color: 'hsl(var(--accent))' }}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, ease: 'easeOut' as const }}
+                >
+                  {about.hero.eyebrow}
+                </motion.p>
+                <motion.h1
+                  className="text-5xl md:text-6xl font-black leading-tight max-w-3xl"
+                  style={{ color: 'hsl(var(--foreground))' }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.08, ease: 'easeOut' as const }}
+                >
+                  {about.hero.headline}
+                </motion.h1>
+                <motion.p
+                  className="text-lg leading-relaxed max-w-2xl"
+                  style={{ color: 'hsl(var(--muted-foreground))' }}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.16, ease: 'easeOut' as const }}
+                >
+                  {about.hero.bio}
+                </motion.p>
+              </motion.div>
+
+              {/* Right — learning pills */}
+              <motion.div
+                className="flex flex-col gap-6 items-center"
+                initial={{ opacity: 0, x: 24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: 0.1, ease: 'easeOut' as const }}
+              >
+                <img src={me} alt="Dishant Bisht" 
+                  style={{
+                    height:'32rem', width:'auto'
+                  }} />
+              </motion.div>
+            </div>
           </div>
         </section>
 
@@ -119,12 +145,12 @@ export default function AboutPage() {
             <div className="relative">
               {/* Vertical line */}
               <div
-                className="absolute left-0 md:left-[140px] top-0 bottom-0 w-px"
+                className="absolute left-0 md:left-[154px] top-0 bottom-0 w-px"
                 style={{ background: 'hsl(var(--border))' }}
               />
 
               <div className="flex flex-col gap-0">
-                {about.journey.timeline.map((item, i) => (
+                {about.journey.timeline.toReversed().map((item, i) => (
                   <motion.div
                     key={item.id}
                     className="relative flex flex-col md:flex-row gap-4 md:gap-10 pb-12"
@@ -134,7 +160,7 @@ export default function AboutPage() {
                     transition={{ duration: 0.4, delay: i * 0.08, ease: 'easeOut' as const }}
                   >
                     {/* Year */}
-                    <div className="md:w-[120px] shrink-0 flex md:justify-end items-start pt-1 pl-6 md:pl-0">
+                    <div className="md:w-[130px] shrink-0 flex md:justify-end items-start pt-1 pl-6 md:pl-0">
                       <span
                         className="text-xs font-mono font-bold"
                         style={{ color: 'hsl(var(--primary))' }}
@@ -145,7 +171,95 @@ export default function AboutPage() {
 
                     {/* Dot */}
                     <div
-                      className="absolute left-[-4px] md:left-[136px] top-1.5 w-2.5 h-2.5 rounded-full border-2"
+                      className="absolute left-[-4px] md:left-[150px] top-1.5 w-2.5 h-2.5 rounded-full border-2"
+                      style={{
+                        background: 'hsl(var(--background))',
+                        borderColor: 'hsl(var(--primary))',
+                        boxShadow: '0 0 8px hsl(var(--primary) / 0.5)',
+                      }}
+                    />
+
+                    {/* Content */}
+                    <div className="pl-6 md:pl-1 flex flex-col gap-2">
+                      <h3
+                        className="text-lg font-bold"
+                        style={{ color: 'hsl(var(--foreground))' }}
+                      >
+                        {item.title}
+                      </h3>
+                      <p
+                        className="text-sm leading-relaxed max-w-xl"
+                        style={{ color: 'hsl(var(--muted-foreground))' }}
+                      >
+                        {item.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── EDUCATIONAL TIMELINE ──────────────────────────────────────────────────────── */}
+        <section
+          className="py-xxl relative overflow-hidden"
+          style={{
+            background: 'hsl(var(--secondary))',
+            borderTop: '1px solid hsl(var(--border))'
+          }}
+        >
+          {/* Cyan glow */}
+          <div
+            className="absolute top-0 left-0 pointer-events-none"
+            style={{
+              width: 500,
+              height: 400,
+              background: 'radial-gradient(ellipse, hsl(var(--accent) / 0.1) 0%, transparent 70%)',
+            }}
+          />
+          <div className="max-w-7xl mx-auto px-6">
+            <motion.h2
+              className="text-3xl md:text-4xl font-black mb-14"
+              style={{ color: 'hsl(var(--foreground))' }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, ease: 'easeOut' as const }}
+            >
+              {about.education.headline}
+            </motion.h2>
+
+            <div className="relative">
+              {/* Vertical line */}
+              <div
+                className="absolute left-0 md:left-[154px] top-0 bottom-0 w-px"
+                style={{ background: 'hsl(var(--border))' }}
+              />
+
+              <div className="flex flex-col gap-0">
+                {about.education.timeline.toReversed().map((item, i) => (
+                  <motion.div
+                    key={item.id}
+                    className="relative flex flex-col md:flex-row gap-4 md:gap-10 pb-12"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: i * 0.08, ease: 'easeOut' as const }}
+                  >
+                    {/* Year */}
+                    <div className="md:w-[130px] shrink-0 flex md:justify-end items-start pt-1 pl-6 md:pl-0">
+                      <span
+                        className="text-xs font-mono font-bold"
+                        style={{ color: 'hsl(var(--primary))' }}
+                      >
+                        {item.year}
+                      </span>
+                    </div>
+
+                    {/* Dot */}
+                    <div
+                      className="absolute left-[-4px] md:left-[150px] top-1.5 w-2.5 h-2.5 rounded-full border-2"
                       style={{
                         background: 'hsl(var(--background))',
                         borderColor: 'hsl(var(--primary))',
@@ -177,19 +291,10 @@ export default function AboutPage() {
 
         {/* ── GENAI TRANSITION ─────────────────────────────────────────── */}
         <section
-          className="py-xxl relative overflow-hidden"
-          style={{ background: 'hsl(var(--secondary))' }}
+          className="py-xxl"
+          style={{ background: 'hsl(var(--background))',
+            borderTop: '1px solid hsl(var(--border))' }}
         >
-          {/* Cyan glow */}
-          <div
-            className="absolute top-0 left-0 pointer-events-none"
-            style={{
-              width: 500,
-              height: 400,
-              background: 'radial-gradient(ellipse, hsl(var(--accent) / 0.1) 0%, transparent 70%)',
-            }}
-          />
-
           <div className="relative z-10 max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               {/* Left */}
@@ -301,12 +406,21 @@ export default function AboutPage() {
 
         {/* ── CTA ──────────────────────────────────────────────────────── */}
         <section
-          className="py-xxl"
+          className="py-xxl relative overflow-hidden"
           style={{
-            background: 'hsl(var(--background))',
-            borderTop: '1px solid hsl(var(--border))',
+            background: 'hsl(var(--secondary))',
+            borderTop: '1px solid hsl(var(--border))'
           }}
         >
+          {/* Cyan glow */}
+          <div
+            className="absolute top-0 left-0 pointer-events-none"
+            style={{
+              width: 500,
+              height: 400,
+              background: 'radial-gradient(ellipse, hsl(var(--accent) / 0.1) 0%, transparent 70%)',
+            }}
+          />
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <motion.div
