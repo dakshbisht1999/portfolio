@@ -66,7 +66,7 @@ export const home = {
         period: 'Jan 2026 – Jul 2026',
         title: 'Private Product Collaboration',
         description:
-          'Contributed as an Angular developer to a private interior-design product while collaborating with a team working with Python/FastAPI, microservices, cloud infrastructure, Docker, and AI/LLM integrations. The product is currently private and cannot be publicly demonstrated.',
+          'Built React interfaces for a private interior-design product while collaborating with a team working with Python/FastAPI microservices, cloud infrastructure, Docker, and AI/LLM integrations. The product is currently private and cannot be publicly demonstrated.',
         status: 'Private',
       },
       {
@@ -74,7 +74,7 @@ export const home = {
         period: 'Aug 2026 – Present',
         title: 'Full-Stack Engineering',
         description:
-          'Expanded from frontend specialization into full-stack development through hands-on work with React, Node.js, Express, MongoDB, authentication, OAuth 2.0, APIs, and AWS deployment.',
+          'Building on full-stack project work at EbizOn, went deeper into React, Node.js, Express, MongoDB, authentication, OAuth 2.0, APIs, and AWS deployment.',
         status: 'Active',
       },
       {
@@ -177,7 +177,11 @@ export const home = {
       { id: 'express', label: 'Express' },
       { id: 'mongodb', label: 'MongoDB' },
       { id: 'oauth', label: 'OAuth 2.0' },
+      { id: 'gcp', label: 'GCP (Google OAuth)' },
       { id: 'aws', label: 'AWS EC2' },
+      { id: 'nginx', label: 'Nginx' },
+      { id: 'ses', label: 'AWS SES' },
+      { id: 'githubActions', label: 'GitHub Actions' },
     ],
     liveUrl: 'https://devtinder.dishantbisht.in',
     githubUrl: 'https://github.com/dakshbisht1999/devtinder-fe/',
@@ -212,9 +216,9 @@ export const home = {
       {
         id: 'rag',
         status: 'Exploring',
-        title: 'Document RAG',
+        title: 'RAG Chatbot',
         description:
-          'Building a document-based conversational system where users can provide documents and interact with the information contained in them.',
+          'A document-grounded conversational AI project where users can provide documents and ask questions based on their contents.',
         concepts: ['RAG', 'Vector Search', 'LLMs'],
       },
       {
@@ -263,9 +267,9 @@ export const about = {
       `
       I'm Dishant Bisht — a Senior Software Engineer with 5+ years of experience building, modernizing, and evolving production web applications across full-stack, API, and cloud environments.
       
-      My foundation spans frontend architecture in Angular, React, and TypeScript alongside full-stack engineering with Node.js, Express, MongoDB, Python, FastAPI, and AWS. I have driven large-scale modernization projects, PWA migrations, and multi-component enterprise ecosystems, while contributing to API design, HLD/LLD discussions, developer mentoring, and cross-functional backend systems built on Java, PHP, and microservices.
+      My foundation spans frontend architecture in Angular, React, and TypeScript alongside full-stack engineering with Node.js, Express, MongoDB, and AWS. I have driven large-scale modernization projects, PWA migrations, and multi-component enterprise ecosystems, while contributing to API design, HLD/LLD discussions, developer mentoring, and cross-functional backend systems built on Java, PHP, and microservices.
       
-      Building on this background, I am continuously deepening my full-stack expertise while expanding into GenAI engineering through real-world systems and project-driven exploration.
+      Building on this background, I am continuously deepening my full-stack expertise while expanding into GenAI engineering through real-world systems and project-driven exploration with Python, FastAPI, LLMs, RAG, and agentic workflows.
       `
   },
   stats: [
@@ -293,17 +297,17 @@ export const about = {
         id: '3',
         year: 'Apr 2021–Mar 2024',
         title: 'Analyst Programmer → Senior Analyst Programmer | EbizOn',
-        description: 'Moved into full-time software engineering, working across multiple web products and taking ownership of frontend development while collaborating closely on APIs, backend integrations, databases, and application architecture. Expanded from Angular into React, Node.js, MongoDB, AWS, and production application development, while progressing from Analyst Programmer to Senior Analyst Programmer.',
+        description: 'Moved into full-time software engineering and grew from Analyst Programmer to Senior Analyst Programmer. Worked full-stack on CADDRA (React) and MariDeal (Angular PWA with Node.js APIs), then led frontend development of the ShipCarte Customer and Admin portals and a frontend team of 4.',
       },
       {
         id: '4',
         year: 'Sep 2024–Dec 2025',
         title: 'Senior Software Engineer | Avalon Information Systems',
-        description: 'Worked across enterprise applications spanning 250+ components, 30+ modules, and 400+ API integrations. Led Angular modernization initiatives, contributed to REST API integration and HLD/LLD discussions, and supported team delivery through mentoring and code reviews.',
+        description: 'Led the Angular 7 → 20 modernization of OpenEMIS products for a UNESCO and CSF initiative, maintaining a versioned shared StyleGuide, building reusable components used across all the products, and cutting pending frontend issues from 75% to 40%. Contributed to REST API integration and HLD/LLD discussions, mentored developers, and built the React-based Parakh (NCERT) dashboard.',
       },
       {
         id: '5',
-        year: 'Dec 2025–Aug 2026',
+        year: 'Jan 2026–Jul 2026',
         title: 'Private Product Collaboration',
         description: 'Expanded into a broader full-stack environment through product collaboration involving React, Python/FastAPI, microservices, Docker, cloud infrastructure, and AI/LLM integrations.',
       },
@@ -396,6 +400,7 @@ export const projects = {
       { id: '2', text: 'Review incoming requests and manage accepted connections' },
       { id: '3', text: 'Profile management, Google OAuth, and secure cookie-based JWT sessions' },
       { id: '4', text: 'AWS EC2 deployment with Nginx, GitHub Actions, and AWS SES email workflows' },
+      { id: '5', text: 'Roadmap: payment gateway, WebSocket live chat for premium users, Swagger API docs, Google AdSense, and Two-Tower recommendations' },
     ],
     techStack: [
       { id: 'react', label: 'React' },
@@ -405,6 +410,7 @@ export const projects = {
       { id: 'express', label: 'Express' },
       { id: 'mongodb', label: 'MongoDB' },
       { id: 'oauth', label: 'Google OAuth 2.0' },
+      { id: 'gcp', label: 'GCP (Google OAuth)' },
       { id: 'ses', label: 'AWS SES' },
       { id: 'aws', label: 'AWS EC2' },
       { id: 'nginx', label: 'Nginx' },
@@ -424,12 +430,13 @@ export const projects = {
       status: 'Production',
       name: 'Portfolio',
       description:
-        'A personal developer portfolio built with React and deployed on AWS. It evolved from an earlier portfolio into the current platform for presenting my engineering work, projects, skills, and technical journey.',
+        'A personal developer portfolio built with React. Designed serverless-first on AWS (S3, CloudFront, Lambda); currently running on EC2 behind Nginx while a CloudFront distribution issue is resolved with AWS support. The contact form reuses the DevTinder backend email API.',
       techStack: [
         { id: 'react', label: 'React' },
-        { id: 'aws', label: 'AWS' },
-        { id: 's3', label: 'S3' },
-        { id: 'cloudfront', label: 'CloudFront' },
+        { id: 'tailwind', label: 'Tailwind CSS' },
+        { id: 'aws', label: 'AWS EC2' },
+        { id: 'nginx', label: 'Nginx' },
+        { id: 'githubActions', label: 'GitHub Actions' },
       ],
       liveUrl: 'https://dishantbisht.in',
       githubUrl: ['https://github.com/dakshbisht1999/portfolio/'],
@@ -437,13 +444,16 @@ export const projects = {
     {
       id: 'rag',
       status: 'In Progress',
-      name: 'Document RAG',
+      name: 'RAG Chatbot',
       description:
         'A document-grounded conversational AI project where users can provide documents and ask questions based on their contents.',
       techStack: [
         { id: 'python', label: 'Python' },
-        { id: 'llm', label: 'LLMs' },
+        { id: 'fastapi', label: 'FastAPI' },
+        { id: 'react', label: 'React' },
         { id: 'embeddings', label: 'Embeddings' },
+        { id: 'vectorsearch', label: 'Vector Search' },
+        { id: 'llm', label: 'LLMs' },
         { id: 'rag', label: 'RAG' },
       ],
       liveUrl: '',
@@ -480,7 +490,7 @@ export const projects = {
         name: 'OpenEMIS',
         organization: 'Avalon',
         description:
-          'Led modernization of OpenEMIS applications, upgrading legacy Angular systems from Angular 7 to Angular 20. Contributed across Exams, Core, Registrations, Styleguide, and related modules, building reusable UI components and data-heavy interfaces for a large education technology platform.',
+          'Led modernization of OpenEMIS applications, upgrading legacy systems from Angular 7 to Angular 20 for a UNESCO and CSF initiative. Contributed across Exams, Core, Registrations and StyleGuide, maintaining a shared StyleGuide library with a release for each Angular version and building reusable components for reporting, certificates and examination statistics. Cut pending frontend issues from 75% to 40%.',
         applications: [
           'Exams',
           'Core',
@@ -504,12 +514,11 @@ export const projects = {
         name: 'ShipCarte',
         organization: 'EbizOn',
         description:
-          `Led frontend development across multiple core applications (Customer, Admin, and Stylo portals) using Angular. Collaborated directly with the Java backend team on API contract definitions, payload structures, and seamless REST integration.
-           Implemented complex features like custom back-button route handling for multi-step workflows, while delivering reusable component architecture to accelerate feature deployment across logistics and e-commerce streams.`,
+          'Led frontend development of the Customer (Angular 11) and Admin (Angular 8) portals, which share the Stylo styleguide across both versions (250+ components, 30+ modules, 400+ API integrations), and led a frontend team of 4. Worked with the Java 17 backend team on API contracts, payload and response structures. Implemented custom markers on google maps to handle shipping of products from multiple shippers to multiple receivers, also the custom back-button route handling for multi-step workflows and delivered reusable components that sped up feature delivery.',
         applications: [
-          'Customer',
-          'Admin',
-          'Stylo',
+          'Customer portal (Angular 11)',
+          'Admin portal (Angular 8)',
+          'Stylo styleguide',
         ],
         focus: [
           'Angular',
@@ -527,15 +536,34 @@ export const projects = {
         name: 'MariDeal',
         organization: 'EbizOn',
         description:
-          'Led the migration of the MariDeal PWA from AngularJS to Angular 13, replacing legacy controllers and directives with a modern component-based architecture. Delivered PWA capabilities, integrated Google OAuth and multilingual support, and connected REST APIs to a Magento backend.',
+          'Full-stack developer on the migration of the MariDeal PWA from AngularJS to Angular 13, replacing legacy controllers and directives with a component-based architecture (MVC to MVVM). Designed and built the Node.js APIs the new app needed and mirrored them in Magento for the legacy production application. Delivered PWA capabilities, Google OAuth and multilingual support.',
         focus: [
           'Angular',
           'AngularJS → Angular migration',
           'PWA development',
           'REST API integration',
+          'Node.js API development',
+          'Magento API integration',
           'Responsive UI',
           'Google OAuth',
           'i18n (Multilingual)',
+        ],
+        liveUrl: '',
+        githubUrl: [],
+      },
+      {
+        id: 'caddra',
+        status: 'Professional · Production',
+        name: 'CADDRA',
+        organization: 'EbizOn',
+        description:
+          'Full-stack developer on a healthcare application. Built the React frontend with role-based authorization and separate patient, doctor and admin dashboards, plus a forms module where doctors create forms and assign them to patients. Designed and developed the new backend APIs in CakePHP and handled live bug fixes and deployments.',
+        focus: [
+          'React',
+          'Role-based dashboards',
+          'Form creation and assignment',
+          'REST API design',
+          'Live bug fixes and deployments',
         ],
         liveUrl: '',
         githubUrl: [],
@@ -572,6 +600,7 @@ export const skills = {
         { id: 'typescript', name: 'TypeScript', level: 90 },
         { id: 'javascript', name: 'JavaScript (ES6+)', level: 95 },
         { id: 'htmlcss', name: 'HTML5 / CSS3', level: 95 },
+        { id: 'tailwind', name: 'Tailwind CSS', level: 75 },
         { id: 'rxjs', name: 'RxJS', level: 80 },
         { id: 'reduxNgrx', name: 'Redux / NgRx', level: 80 },
       ],
@@ -583,11 +612,11 @@ export const skills = {
       color: 'green',
       description: 'Building APIs, authentication flows, data layers, and full-stack application logic.',
       skills: [
-        { id: 'node', name: 'Node.js', level: 80 },
-        { id: 'express', name: 'Express', level: 80 },
-        { id: 'mongodb', name: 'MongoDB', level: 80 },
+        { id: 'node', name: 'Node.js', level: 70 },
+        { id: 'express', name: 'Express', level: 75 },
+        { id: 'mongodb', name: 'MongoDB', level: 75 },
         { id: 'restapis', name: 'REST APIs', level: 90 },
-        { id: 'jwtauth', name: 'JWT / Auth', level: 80 },
+        { id: 'jwtauth', name: 'JWT / Auth', level: 70 },
         { id: 'oauth', name: 'OAuth 2.0', level: 70 },
       ],
     },
@@ -615,14 +644,14 @@ export const skills = {
       color: 'accent',
       description: 'Building practical AI-native applications on top of a full-stack engineering foundation.',
       skills: [
-        { id: 'python', name: 'Python', level: 25 },
-        { id: 'fastapi', name: 'Fast API', level: 20 },
-        { id: 'llms', name: 'LLMs', level: 20 },
-        { id: 'embeddings', name: 'Embeddings', level: 25 },
-        { id: 'rag', name: 'RAG', level: 15 },
-        { id: 'mcp', name: 'MCP', level: 15 },
-        { id: 'langchain', name: 'LangChain', level: 25 },
-        { id: 'langgraph', name: 'LangGraph', level: 20 },
+        { id: 'python', name: 'Python', level: 10 },
+        { id: 'fastapi', name: 'Fast API', level: 10 },
+        { id: 'llms', name: 'LLMs', level: 5 },
+        { id: 'embeddings', name: 'Embeddings', level: 5 },
+        { id: 'rag', name: 'RAG', level: 0 },
+        { id: 'mcp', name: 'MCP', level: 0 },
+        { id: 'langchain', name: 'LangChain', level: 0 },
+        { id: 'langgraph', name: 'LangGraph', level: 0 },
       ],
     },
   ],
@@ -718,10 +747,15 @@ export const skills = {
       
       // DevOps, Cloud & Environments
       { id: 'docker', label: 'Docker' },
-      { id: 'kubernetes', label: 'Kubernetes' },
       { id: 'aws', label: 'AWS (EC2, S3, Cloudfront, SES, Route 53)' },
+      { id: 'gcp', label: 'GCP (Google OAuth / Sign-In)' },
       { id: 'github-actions', label: 'GitHub Actions' },
       { id: 'nginx', label: 'Nginx' },
+      { id: 'copilot', label: 'GitHub Copilot' },
+      { id: 'cursor', label: 'Cursor' },
+      { id: 'codex', label: 'Codex' },
+      { id: 'antigravity', label: 'Antigravity' },
+      { id: 'claude', label: 'Claude' },
     ],
   },
 };

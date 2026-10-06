@@ -116,47 +116,58 @@ export default function SkillsPage() {
                     {/* Skill bars */}
                     <div className="flex flex-col gap-4">
                       {stack.skills.map((skill, ski) => (
-                        <div key={skill.id} className="flex flex-col gap-1.5">
-                          <div className="flex items-center justify-between">
-                            <span
-                              className="text-sm font-medium"
-                              style={{ color: 'hsl(var(--foreground))' }}
+                        skill.level > 0 ? (
+                          <div key={skill.id} className="flex flex-col gap-1.5">
+                            <div className="flex items-center justify-between">
+                              <span
+                                className="text-sm font-medium"
+                                style={{ color: 'hsl(var(--foreground))' }}
+                              >
+                                {skill.name}
+                              </span>
+                              <span
+                                className="text-xs font-mono"
+                                style={{ color: 'hsl(var(--muted-foreground))' }}
+                              >
+                                {skill.level}%
+                              </span>
+                            </div>
+                            {/* Track */}
+                            <div
+                              className="h-1.5 rounded-full overflow-hidden"
+                              style={{ background: 'hsl(var(--border))' }}
                             >
+                              <motion.div
+                                className="h-full rounded-full"
+                                style={{
+                                  background: isAccent
+                                    ? 'hsl(var(--accent))'
+                                    : 'hsl(var(--primary))',
+                                  boxShadow: isAccent
+                                    ? '0 0 8px hsl(var(--accent) / 0.5)'
+                                    : '0 0 8px hsl(var(--primary) / 0.4)',
+                                }}
+                                initial={{ width: 0 }}
+                                whileInView={{ width: `${skill.level}%` }}
+                                viewport={{ once: true }}
+                                transition={{
+                                  duration: 0.8,
+                                  delay: si * 0.07 + ski * 0.06,
+                                  ease: 'easeOut' as const,
+                                }}
+                              />
+                            </div>
+                          </div>
+                        ) : (
+                          <div key={skill.id} className="flex items-center justify-between">
+                            <span className="text-sm font-medium" style={{ color: 'hsl(var(--foreground))' }}>
                               {skill.name}
                             </span>
-                            <span
-                              className="text-xs font-mono"
-                              style={{ color: 'hsl(var(--muted-foreground))' }}
-                            >
-                              {skill.level}%
+                            <span className="text-xs font-medium" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                              Learning
                             </span>
                           </div>
-                          {/* Track */}
-                          <div
-                            className="h-1.5 rounded-full overflow-hidden"
-                            style={{ background: 'hsl(var(--border))' }}
-                          >
-                            <motion.div
-                              className="h-full rounded-full"
-                              style={{
-                                background: isAccent
-                                  ? 'hsl(var(--accent))'
-                                  : 'hsl(var(--primary))',
-                                boxShadow: isAccent
-                                  ? '0 0 8px hsl(var(--accent) / 0.5)'
-                                  : '0 0 8px hsl(var(--primary) / 0.4)',
-                              }}
-                              initial={{ width: 0 }}
-                              whileInView={{ width: `${skill.level}%` }}
-                              viewport={{ once: true }}
-                              transition={{
-                                duration: 0.8,
-                                delay: si * 0.07 + ski * 0.06,
-                                ease: 'easeOut' as const,
-                              }}
-                            />
-                          </div>
-                        </div>
+                        )
                       ))}
                     </div>
                   </motion.div>
